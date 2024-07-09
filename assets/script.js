@@ -22,14 +22,11 @@ const slides = [
 const precedent = document.querySelector(".arrow_left")
 const suivant = document.querySelector(".arrow_right")
 
-// image affichée sur la bannière
+// image pour afficher les slides
 const imageActive = document.querySelector(".banner-img")
 
-// texte affiché sur la bannière 
+// texte affiché sur les slides
 const tagLineActive = document.querySelector("#banner p");
-
-// dot sélectionné sur la bannière
-const dotActive = document.getElementsByClassName("dot")
 
 // conteneur parent des dots
 const dotContainer = document.querySelector(".dots")
@@ -43,33 +40,26 @@ for (let i = 0; i < slides.length; i++) {
 	newDot.classList.add("dot")
 	dotContainer.appendChild(newDot)
 }
-dotActive[slideActive].classList.add("dot_selected")
+dotActive = document.querySelectorAll(".dot");
+dotActive[slideActive].classList.add("dot_selected");
 
-// Évènement au clic sur la flèche précédent
-precedent.addEventListener('click', function(){
-	if (slideActive === 0) {
-		slideActive = slides.length - 1
-	}else {
-		slideActive--
-	}
-	updateSlide()
-})
+function changerSlide(direction) {
+    if (direction === 'precedent') {
+        slideActive = (slideActive === 0) ? slides.length - 1 : slideActive - 1;
+    } else {
+        slideActive = (slideActive === slides.length - 1) ? 0 : slideActive + 1;
+    }
+    updateSlide();
+}
 
-// Évènement au clic sur la flèche suivant
-suivant.addEventListener('click', function(){
-	if (slideActive === slides.length - 1) {
-		slideActive = 0
-	}else {
-		slideActive++
-	}
-	updateSlide()
-})
+precedent.addEventListener('click', () => changerSlide('precedent'));
+suivant.addEventListener('click', () => changerSlide('suivant'));
 
 // Fonction qui permet d'actualiser la valeur de slideActive dans les éléments concernés
 function updateSlide() {
 	imageActive.src = slides[slideActive].image
 	tagLineActive.innerHTML = slides[slideActive].tagLine
-	//boucle qui permet de supprimer la classe selected des dots
+
 	for (let i = 0; i < slides.length; i++) {
 		dotActive[i].classList.remove("dot_selected")
 	}
