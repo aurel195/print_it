@@ -22,7 +22,7 @@ const slides = [
 const precedent = document.querySelector(".arrow_left")
 const suivant = document.querySelector(".arrow_right")
 
-// image pour afficher les slides
+// banniere utilisée pour afficher les slides
 const imageActive = document.querySelector(".banner-img")
 
 // texte affiché sur les slides
@@ -40,7 +40,7 @@ for (let i = 0; i < slides.length; i++) {
 	newDot.classList.add("dot")
 	dotContainer.appendChild(newDot)
 }
-dotActive = document.querySelectorAll(".dot");
+const dotActive = document.querySelectorAll(".dot");
 dotActive[slideActive].classList.add("dot_selected");
 
 function changerSlide(direction) {
@@ -52,16 +52,15 @@ function changerSlide(direction) {
     updateSlide();
 }
 
-precedent.addEventListener('click', () => changerSlide('precedent'));
-suivant.addEventListener('click', () => changerSlide('suivant'));
-
 // Fonction qui permet d'actualiser la valeur de slideActive dans les éléments concernés
 function updateSlide() {
 	imageActive.src = slides[slideActive].image
 	tagLineActive.innerHTML = slides[slideActive].tagLine
-
 	for (let i = 0; i < slides.length; i++) {
 		dotActive[i].classList.remove("dot_selected")
 	}
 	dotActive[slideActive].classList.add("dot_selected")
 }
+
+precedent.addEventListener('click', () => changerSlide('precedent'));
+suivant.addEventListener('click', () => changerSlide('suivant'));
