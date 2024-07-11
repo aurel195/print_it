@@ -19,17 +19,17 @@ const slides = [
 
 
 // flèches slider
-const precedent = document.querySelector(".arrow_left")
-const suivant = document.querySelector(".arrow_right")
+const precedent = document.querySelector(".arrow_left");
+const suivant = document.querySelector(".arrow_right");
 
 // banniere utilisée pour afficher les slides
-const imageActive = document.querySelector(".banner-img")
+const imageActive = document.querySelector(".banner-img");
 
 // texte affiché sur les slides
 const tagLineActive = document.querySelector("#banner p");
 
 // conteneur parent des dots
-const dotContainer = document.querySelector(".dots")
+const dotContainer = document.querySelector(".dots");
 
 // Variable à modifier pour changer image + texte + dot affiché
 let slideActive = 0
@@ -64,3 +64,6 @@ function updateSlide() {
 
 precedent.addEventListener('click', () => changerSlide('precedent'));
 suivant.addEventListener('click', () => changerSlide('suivant'));
+
+
+fichier modifié
