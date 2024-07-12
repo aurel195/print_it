@@ -66,4 +66,3 @@ precedent.addEventListener('click', () => changerSlide('precedent'));
 suivant.addEventListener('click', () => changerSlide('suivant'));
 
 
-fichier modifié
